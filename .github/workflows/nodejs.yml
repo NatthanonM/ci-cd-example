@@ -1,9 +1,7 @@
-name: Node.js CI
+name: Node.js CI & Web Deploy
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -11,10 +9,20 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-    - run: npm install
-    - run: npm test
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Deploy HTML page to local web folder
+        run: |
+          mkdir "C:\Users\manop\Desktop\deploy\site" -Force
+          copy public\* "C:\Users\manop\Desktop\deploy\site" /Y

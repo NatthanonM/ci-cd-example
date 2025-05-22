@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Webpage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f0f0f0;
+    }
+    h1 { color: #333; }
+    #message { margin: 20px; font-size: 1.2em; color: #555; }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Webpage</h1>
+  <p id="message">This is a simple webpage using HTML, CSS, and JavaScript.</p>
+  <button onclick="changeMessage()">Click Me</button>
+  <script>
+    function changeMessage() {
+      document.getElementById("message").innerText = "You clicked the button!";
+    }
+  </script>
+</body>
+</html>
