@@ -21,8 +21,10 @@ jobs:
 
       - name: Run tests
         run: npm test
-
+    
       - name: Deploy HTML page to local web folder
+        shell: pwsh
         run: |
-          mkdir "C:\Users\manop\Desktop\deploy\site" -Force
-          copy public\* "C:\Users\manop\Desktop\deploy\site" /Y
+            $target = "C:\Users\manop\Desktop\deploy\site"
+            if (-Not (Test-Path $target)) { New-Item -ItemType Directory -Force -Path $target }
+            Copy-Item -Path public\* -Destination $target -Recurse -Force
