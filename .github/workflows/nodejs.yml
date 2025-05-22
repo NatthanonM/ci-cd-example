@@ -23,7 +23,6 @@ jobs:
         run: npm test
     
       - name: Deploy HTML page to local web folder
-        shell: pwsh
         run: |
             $target = "C:\Users\manop\Desktop\deploy\site"
             if (-Not (Test-Path $target)) { New-Item -ItemType Directory -Force -Path $target }
